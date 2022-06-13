@@ -3,7 +3,7 @@
 //C++ system includes
 #include <iostream>
 #include <cstdint>
-
+#include<string>
 //3rd-party includes
 
 //own include
@@ -12,17 +12,14 @@
 
 
 int32_t main(){
-	//FileReader openTheFile;
-	printf("please enter the file name : \n");
+	FileReader openTheFile;
+	printf("please enter the file name : ");
 	std::string enterFileName;
+	std::string pathOfFile;
 	std::cin >> enterFileName;
-//	openTheFile.path = "./files/" + enterFileName;
-std::string output;
+	pathOfFile = "./files/" + enterFileName;
 
-	output = "./files/" + enterFileName;
+	std::cout << enterFileName << std::endl;
 
-	std::cout << output << std::endl;
-
-	std::getline(std::cin,enterFileName);
 	return  EXIT_SUCCESS;
 }

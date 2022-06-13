@@ -6,7 +6,8 @@
 
 //C++ system includes
 #include<iostream>
-//#include <fstream>
+#include<fstream>
+#include<sstream>
 
 //3rd-party includes
 
@@ -14,12 +15,13 @@
 class FileReader {
 public:
 	FileReader();
+	FileReader(std::string& path);
 	virtual ~FileReader();
-	void ReadLine();
-	std::string path;
+
 private:
-	std::istream streamFileReader;
-	std::stringstream buffer;
+	void saveDataIntoStorager();
+	std::string line;
+
 };
 
 

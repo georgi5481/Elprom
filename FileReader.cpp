@@ -5,25 +5,27 @@
 
 //C++ system includes
 #include<iostream>
-
+#include<sstream>
+#include<fstream>
 //3rd-party includes
 
 //Own components includes
 
 
-FileReader::FileReader(){
-	streamFileReader(path);
+FileReader::FileReader(std::string& path){
+	std::ifstream streamFileReader(path);
 
-	if(streamFileReader){
-		std::stringstream buffer;
+	if (streamFileReader.is_open()) {
+			while (std::getline(streamFileReader, line))	//reading every line and putting it into the helping string
+		{
+			std::cout << line << std::endl << std::endl;
+		}
 
-		 buffer << streamFileReader.rdbuf();
-
+	  }
+	else{
+		  std::cerr << "Could not open the file - " << path << "'" << std::endl;
 	}
-	else {
-		std::cerr << "there has been a problem opening the file. prease try again." << std::endl;
-	}
-
+	streamFileReader.close();
 
 }
 
@@ -31,10 +33,3 @@ FileReader::~FileReader() {
 
 }
 
-void ReadLine(){
-	std::string myText;
-	while (std::getline(bufferReader, myText)) {
-
-	  std::cout << myText;
-	}
-}
