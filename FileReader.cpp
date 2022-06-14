@@ -30,6 +30,4 @@ FileReader::FileReader(std::string& path){
 }
 
 FileReader::~FileReader() {
-
 }
-

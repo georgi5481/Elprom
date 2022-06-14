@@ -10,6 +10,8 @@
 //3rd-party includes
 
 //own include
+
+
 class FileReader {
 public:
 	FileReader();
