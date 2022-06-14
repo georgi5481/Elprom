@@ -5,9 +5,7 @@
 //C system includes
 
 //C++ system includes
-#include<iostream>
-#include<fstream>
-#include<sstream>
+#include<string>
 
 //3rd-party includes
 
@@ -16,7 +14,7 @@ class FileReader {
 public:
 	FileReader();
 	FileReader(std::string& path);
-	virtual ~FileReader();
+	~FileReader();
 
 private:
 	void saveDataIntoStorager();

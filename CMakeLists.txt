@@ -10,8 +10,8 @@ set(_BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})	#set the current path to be equal to 
 
 add_executable(
 	${PROJECT_NAME} 	
-	#${_BASE_DIR}/FileReader.h
-	#${_BASE_DIR}/FileReader.cpp
+	${_BASE_DIR}/FileReader.h
+	${_BASE_DIR}/FileReader.cpp
 	
 	${_BASE_DIR}/main.cpp
 	)

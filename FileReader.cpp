@@ -20,11 +20,11 @@ FileReader::FileReader(std::string& path){
 		{
 			std::cout << line << std::endl << std::endl;
 		}
-
-	  }
+	 }
 	else{
-		  std::cerr << "Could not open the file - " << path << "'" << std::endl;
+		  std::cerr << "Could not open the file location : " << path << std::endl;
 	}
+
 	streamFileReader.close();
 
 }
