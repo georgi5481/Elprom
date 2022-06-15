@@ -15,7 +15,6 @@ class DataSaver {
 public:
 	DataSaver();
 	virtual ~DataSaver();
-private:
 	std::string drafting;
 	std::string positionPlace;
 	std::string positionNumber;

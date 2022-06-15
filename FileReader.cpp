@@ -10,15 +10,17 @@
 //3rd-party includes
 
 //Own components includes
+#include"DataSaver.h"
 
 
 FileReader::FileReader(std::string& path){
 	std::ifstream streamFileReader(path);
 
 	if (streamFileReader.is_open()) {
-			while (std::getline(streamFileReader, line))	//reading every line and putting it into the helping string
+			while (std::getline(streamFileReader, line , ','))	//reading every line and putting it into the helping string
 		{
-			std::cout << line << std::endl << std::endl;
+				std::cout << line << std::endl << std::endl;
+
 		}
 	 }
 	else{
