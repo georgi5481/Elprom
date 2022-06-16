@@ -54,6 +54,10 @@ FileReader::~FileReader() {
 
 void FileReader::saveFilledFile(){
 
+	for(auto& input : savedInputs){
+		//TODO: 1 bool CHECK MATERIAL; 2 After that qty*weight
+
+	}
 }
 
 
