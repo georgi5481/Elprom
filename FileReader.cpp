@@ -17,10 +17,21 @@ FileReader::FileReader(std::string& path){
 	std::ifstream streamFileReader(path);
 
 	if (streamFileReader.is_open()) {
-			while (std::getline(streamFileReader, line , ','))	//reading every line and putting it into the helping string
+		DataSaver input;
+		std::string hello;
+			while (std::getline(streamFileReader, input.drafting , ','))	//reading every line and putting it into the helping string
 		{
-				std::cout << line << std::endl << std::endl;
+				std::getline(streamFileReader, input.positionPlace , ',');
+				std::getline(streamFileReader, input.positionNumber , ',');
+				std::getline(streamFileReader, input.draftNumerations , ',');
+				std::getline(streamFileReader, input.nameDetail , ',');
+				std::getline(streamFileReader, input.quantity , ',');
+				std::getline(streamFileReader, input.material , ',');
+				std::getline(streamFileReader, input.weigthSingleDetail , ',');
+				std::getline(streamFileReader, input.BTES);
 
+				std::cout << input.drafting  << std::endl << input.weigthSingleDetail<< std::endl;
+				std::cin >> hello;
 		}
 	 }
 	else{
