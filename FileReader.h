@@ -16,6 +16,7 @@ class FileReader {
 public:
 	FileReader();
 	FileReader(std::string& path);
+	void saveFilledFile();
 	~FileReader();
 
 private:
