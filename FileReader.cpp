@@ -22,21 +22,30 @@ FileReader::FileReader(std::string& path){
 	if (streamFileReader.is_open()) {
 
 
-			for (DataSaver input;																//this is equal to  for(int i = 0; i<0: i++)
-					std::getline(streamFileReader, input.drafting , ',');
+			for (DataSaver input;																//this is equal to  	for(int i = 0; i<0: i++)
+					std::getline(streamFileReader, input.drafting , ';');
 															savedInputs.push_back(input)	)	//reading every line and putting it into the helping string
 			{
 
-				std::getline(streamFileReader, input.positionPlace , ',');
-				std::getline(streamFileReader, input.positionNumber , ',');
-				std::getline(streamFileReader, input.draftNumerations , ',');
-				std::getline(streamFileReader, input.nameDetail , ',');
-				std::getline(streamFileReader, input.quantity , ',');
-				std::getline(streamFileReader, input.material , ',');
-				std::getline(streamFileReader, input.weigthSingleDetail , ',');
+				std::getline(streamFileReader, input.positionPlace , ';');
+				std::getline(streamFileReader, input.positionNumber , ';');
+				std::getline(streamFileReader, input.draftNumerations , ';');
+				std::getline(streamFileReader, input.nameDetail , ';');
+				std::getline(streamFileReader, input.quantity , ';');
+
+				std::getline(streamFileReader, input.material , ';');
+				if(streamFileReader.peek() != '"'){
+					std::string otherHalf ;
+					std::getline(streamFileReader,otherHalf, ';');
+					input.material += otherHalf;
+				}
+				std::getline(streamFileReader, input.weigthSingleDetail , ';');
 				std::getline(streamFileReader, input.BTES);
 
-				std::cout << savedInputs.size() << std::endl;
+				std::cout  << input.drafting << " , " << input.positionPlace << " , " << input.positionPlace << " , " << input.positionNumber << " , " <<
+						input.draftNumerations << " , " << input.nameDetail << " , " << input.quantity << " , " <<
+						input.material << " , " << input.weigthSingleDetail << " , " << input.BTES << std::endl << savedInputs.size() << std::endl;
+
 
 			}
 	 }
