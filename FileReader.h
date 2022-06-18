@@ -11,6 +11,7 @@
 
 //own include
 
+struct DataSaver;
 
 class FileReader {
 public:
@@ -20,6 +21,7 @@ public:
 	~FileReader();
 
 private:
+	void singleObjectSort(DataSaver& storedDataLine);
 	void saveDataIntoStorager();
 	std::string line;
 

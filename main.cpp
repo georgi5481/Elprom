@@ -35,6 +35,7 @@ int32_t main(){
 
 
 	FileReader openTheFile(pathOfFile);
+	openTheFile.saveFilledFile();
 
 	return  EXIT_SUCCESS;
 }

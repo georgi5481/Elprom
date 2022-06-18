@@ -8,13 +8,16 @@
 #include<sstream>
 #include<fstream>
 #include<vector>
-
+#include<algorithm>
 //3rd-party includes
 
 //Own components includes
 #include"DataSaver.h"
 
+static 	Weights storageWeights;
 static std::vector<DataSaver> savedInputs;
+static char separatinCharacter = ';';
+
 
 FileReader::FileReader(std::string& path){
 	std::ifstream streamFileReader(path);
@@ -23,29 +26,30 @@ FileReader::FileReader(std::string& path){
 
 
 			for (DataSaver input;																//this is equal to  	for(int i = 0; i<0: i++)
-					std::getline(streamFileReader, input.drafting , ';');
+					std::getline(streamFileReader, input.drafting , separatinCharacter);
 															savedInputs.push_back(input)	)	//reading every line and putting it into the helping string
 			{
 
-				std::getline(streamFileReader, input.positionPlace , ';');
-				std::getline(streamFileReader, input.positionNumber , ';');
-				std::getline(streamFileReader, input.draftNumerations , ';');
-				std::getline(streamFileReader, input.nameDetail , ';');
-				std::getline(streamFileReader, input.quantity , ';');
+				std::getline(streamFileReader, input.positionPlace , separatinCharacter);
+				std::getline(streamFileReader, input.positionNumber , separatinCharacter);
+				std::getline(streamFileReader, input.draftNumerations , separatinCharacter);
+				std::getline(streamFileReader, input.nameDetail , separatinCharacter);
+				std::getline(streamFileReader, input.quantity , separatinCharacter);
 
-				std::getline(streamFileReader, input.material , ';');
-				if(streamFileReader.peek() != '"'){
-					std::string otherHalf ;
-					std::getline(streamFileReader,otherHalf, ';');
+				std::getline(streamFileReader, input.material , separatinCharacter);
+				if(input.material.back() != '"'  && input.material.back() != ' '){	//in case we have ';' symbol in the materials
+					std::string otherHalf;
+					std::getline(streamFileReader,otherHalf, separatinCharacter);
 					input.material += otherHalf;
 				}
-				std::getline(streamFileReader, input.weigthSingleDetail , ';');
+				std::getline(streamFileReader, input.weigthSingleDetail , separatinCharacter);
+
 				std::getline(streamFileReader, input.BTES);
 
-				std::cout  << input.drafting << " , " << input.positionPlace << " , " << input.positionPlace << " , " << input.positionNumber << " , " <<
+
+				std::cout  << input.drafting << " , " << input.positionPlace <<  " , " << input.positionNumber << " , " <<
 						input.draftNumerations << " , " << input.nameDetail << " , " << input.quantity << " , " <<
 						input.material << " , " << input.weigthSingleDetail << " , " << input.BTES << std::endl << savedInputs.size() << std::endl;
-
 
 			}
 	 }
@@ -58,14 +62,29 @@ FileReader::FileReader(std::string& path){
 }
 
 FileReader::~FileReader() {
+
+}
+
+void FileReader::singleObjectSort(DataSaver& storedDataLine){
+	if(storedDataLine.weigthSingleDetail.size() > 2){
+
+		storedDataLine.weigthSingleDetail.erase(remove(storedDataLine.weigthSingleDetail.begin(), storedDataLine.weigthSingleDetail.end(), 'A'), storedDataLine.weigthSingleDetail.end());
+
+		std::string::size_type sz;
+		double test = std::stod(storedDataLine.weigthSingleDetail , sz);
+
+
+		if(storedDataLine.material.find("C2R") != std::string::npos){
+			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << test << std::endl;
+
+		}
+	}
 }
 
 
 void FileReader::saveFilledFile(){
-
-	for(auto& input : savedInputs){
-		//TODO: 1 bool CHECK MATERIAL; 2 After that qty*weight
-
+	for(auto& inputObject : savedInputs){
+		singleObjectSort(inputObject);
 	}
 }
 

@@ -9,13 +9,3 @@
 
 //Own components includes
 
-
-DataSaver::DataSaver() {
-
-
-}
-
-DataSaver::~DataSaver() {
-
-}
-

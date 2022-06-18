@@ -10,11 +10,14 @@
 //3rd-party includes
 
 //own include
+struct Weights{
+	 double weightCu = 0;
+	 double weightWood = 0;
+	 double	weightUnknown = 0;
 
-class DataSaver {
-public:
-	DataSaver();
-	virtual ~DataSaver();
+};
+
+struct DataSaver {
 	std::string drafting;
 	std::string positionPlace;
 	std::string positionNumber;
