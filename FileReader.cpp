@@ -69,13 +69,12 @@ FileReader::~FileReader() {
 void FileReader::singleObjectSort(DataSaver& storedDataLine){
 	if(storedDataLine.weigthSingleDetail.size() > 2){
 
-		//storedDataLine.weigthSingleDetail = storedDataLine.weigthSingleDetail.substr(1, storedDataLine.weigthSingleDetail.size() - 2);
+		storedDataLine.weigthSingleDetail = storedDataLine.weigthSingleDetail.substr(1, storedDataLine.weigthSingleDetail.size() - 2);
+		std::replace(storedDataLine.weigthSingleDetail.begin(), storedDataLine.weigthSingleDetail.end(), ',', '.');
 
-		double test = std::stod(storedDataLine.weigthSingleDetail.c_str());
-
-
+		//double test = std::stod(storedDataLine.weigthSingleDetail);
 		if(storedDataLine.material.find("C2R") != std::string::npos){
-			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << test << std::endl;//<< test << std::endl;
+			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << storedDataLine.weigthSingleDetail << std::endl;//<< test << std::endl;
 
 		}
 	}
