@@ -9,10 +9,11 @@
 #include<fstream>
 #include<vector>
 #include<algorithm>
+#include<string>
 //3rd-party includes
 
 //Own components includes
-#include"DataSaver.h"
+#include"config/DataSaver.h"
 
 static 	Weights storageWeights;
 static std::vector<DataSaver> savedInputs;
@@ -68,14 +69,13 @@ FileReader::~FileReader() {
 void FileReader::singleObjectSort(DataSaver& storedDataLine){
 	if(storedDataLine.weigthSingleDetail.size() > 2){
 
-		storedDataLine.weigthSingleDetail.erase(remove(storedDataLine.weigthSingleDetail.begin(), storedDataLine.weigthSingleDetail.end(), 'A'), storedDataLine.weigthSingleDetail.end());
+		//storedDataLine.weigthSingleDetail = storedDataLine.weigthSingleDetail.substr(1, storedDataLine.weigthSingleDetail.size() - 2);
 
-		std::string::size_type sz;
-		double test = std::stod(storedDataLine.weigthSingleDetail , sz);
+		double test = std::stod(storedDataLine.weigthSingleDetail.c_str());
 
 
 		if(storedDataLine.material.find("C2R") != std::string::npos){
-			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << test << std::endl;
+			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << test << std::endl;//<< test << std::endl;
 
 		}
 	}
