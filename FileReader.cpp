@@ -18,7 +18,7 @@
 
 static 	Weights storageWeights;
 static std::vector<DataSaver> savedInputs;
-static char separatinCharacter = ';';
+static char separatingCharacter = ';';
 
 
 FileReader::FileReader(std::string& path){
@@ -28,23 +28,23 @@ FileReader::FileReader(std::string& path){
 
 
 			for (DataSaver input;																//this is equal to  	for(int i = 0; i<0: i++)
-					std::getline(streamFileReader, input.drafting , separatinCharacter);
+					std::getline(streamFileReader, input.drafting , separatingCharacter);
 															savedInputs.push_back(input)	)	//reading every line and putting it into the helping string
 			{
 
-				std::getline(streamFileReader, input.positionPlace , separatinCharacter);
-				std::getline(streamFileReader, input.positionNumber , separatinCharacter);
-				std::getline(streamFileReader, input.draftNumerations , separatinCharacter);
-				std::getline(streamFileReader, input.nameDetail , separatinCharacter);
-				std::getline(streamFileReader, input.quantity , separatinCharacter);
+				std::getline(streamFileReader, input.positionPlace , separatingCharacter);
+				std::getline(streamFileReader, input.positionNumber , separatingCharacter);
+				std::getline(streamFileReader, input.draftNumerations , separatingCharacter);
+				std::getline(streamFileReader, input.nameDetail , separatingCharacter);
+				std::getline(streamFileReader, input.quantity , separatingCharacter);
 
-				std::getline(streamFileReader, input.material , separatinCharacter);
+				std::getline(streamFileReader, input.material , separatingCharacter);
 				if(input.material.back() != '"'  && input.material.back() != ' '){	//in case we have ';' symbol in the materials
 					std::string otherHalf;
-					std::getline(streamFileReader,otherHalf, separatinCharacter);
+					std::getline(streamFileReader,otherHalf, separatingCharacter);
 					input.material += otherHalf;
 				}
-				std::getline(streamFileReader, input.weigthSingleDetail , separatinCharacter);
+				std::getline(streamFileReader, input.weigthSingleDetail , separatingCharacter);
 
 				std::getline(streamFileReader, input.BTES);
 
@@ -74,16 +74,18 @@ void FileReader::singleObjectSort(DataSaver& storedDataLine){
 		//converting string to double  with the next 3 lines
 		storedDataLine.weigthSingleDetail = storedDataLine.weigthSingleDetail.substr(1, storedDataLine.weigthSingleDetail.size() - 2);
 		std::replace(storedDataLine.weigthSingleDetail.begin(), storedDataLine.weigthSingleDetail.end(), ',', '.');
-		double test = atof(storedDataLine.weigthSingleDetail.c_str());
+		double weghtMaterial = atof(storedDataLine.weigthSingleDetail.c_str());
 
 		if(storedDataLine.material.find("C2R") != std::string::npos){
-			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << test << "     "
+			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << weghtMaterial << "     "
 					<< storedDataLine.weigthSingleDetail.size()  << std::endl;
 
 		}
-		else if(storedDataLine.material.find("мед") != std::string::npos){
-			std::cout << "found Cu material";
+		else if(storedDataLine.material.find("Cu" != std::string::npos)){
+			std::cout << "found Cu material" << storedDataLine.positionNumber << " with "<< weghtMaterial << std::endl;
 		}
+
+
 	}
 }
 
