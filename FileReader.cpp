@@ -10,6 +10,7 @@
 #include<vector>
 #include<algorithm>
 #include<string>
+#include <stdlib.h>
 //3rd-party includes
 
 //Own components includes
@@ -67,15 +68,21 @@ FileReader::~FileReader() {
 }
 
 void FileReader::singleObjectSort(DataSaver& storedDataLine){
+
 	if(storedDataLine.weigthSingleDetail.size() > 2){
 
+		//converting string to double  with the next 3 lines
 		storedDataLine.weigthSingleDetail = storedDataLine.weigthSingleDetail.substr(1, storedDataLine.weigthSingleDetail.size() - 2);
 		std::replace(storedDataLine.weigthSingleDetail.begin(), storedDataLine.weigthSingleDetail.end(), ',', '.');
+		double test = atof(storedDataLine.weigthSingleDetail.c_str());
 
-		//double test = std::stod(storedDataLine.weigthSingleDetail);
 		if(storedDataLine.material.find("C2R") != std::string::npos){
-			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << storedDataLine.weigthSingleDetail << std::endl;//<< test << std::endl;
+			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << test << "     "
+					<< storedDataLine.weigthSingleDetail.size()  << std::endl;
 
+		}
+		else if(storedDataLine.material.find("мед") != std::string::npos){
+			std::cout << "found Cu material";
 		}
 	}
 }
