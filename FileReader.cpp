@@ -69,23 +69,33 @@ FileReader::~FileReader() {
 
 void FileReader::singleObjectSort(DataSaver& storedDataLine){
 
-	if(storedDataLine.weigthSingleDetail.size() > 2){
+	double weightMaterial = 0;	//set the weight to zero by dafault
+	if(storedDataLine.positionNumber != " "){
+		if(storedDataLine.weigthSingleDetail.size() > 2){
 
-		//converting string to double  with the next 3 lines
-		storedDataLine.weigthSingleDetail = storedDataLine.weigthSingleDetail.substr(1, storedDataLine.weigthSingleDetail.size() - 2);
-		std::replace(storedDataLine.weigthSingleDetail.begin(), storedDataLine.weigthSingleDetail.end(), ',', '.');
-		double weghtMaterial = atof(storedDataLine.weigthSingleDetail.c_str());
+			//converting string to double  with the next 3 lines
+			storedDataLine.weigthSingleDetail = storedDataLine.weigthSingleDetail.substr(1, storedDataLine.weigthSingleDetail.size() - 2);
+			std::replace(storedDataLine.weigthSingleDetail.begin(), storedDataLine.weigthSingleDetail.end(), ',', '.');
 
-		if(storedDataLine.material.find("C2R") != std::string::npos){
-			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << weghtMaterial << "     "
-					<< storedDataLine.weigthSingleDetail.size()  << std::endl;
-
-		}
-		else if(storedDataLine.material.find("Cu" != std::string::npos)){
-			std::cout << "found Cu material" << storedDataLine.positionNumber << " with "<< weghtMaterial << std::endl;
+			weightMaterial = atof(storedDataLine.weigthSingleDetail.c_str());	//change only if we have input string
 		}
 
+		if(storedDataLine.material.find("C2R") != std::string::npos || storedDataLine.material.find("P4R") != std::string::npos){
+			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << weightMaterial << " weight." << std::endl;
 
+		}
+		else if(storedDataLine.material.find("Cu") != std::string::npos || storedDataLine.material.find("мед") != std::string::npos){
+			std::cout << "Found Cu material at " << storedDataLine.positionNumber << "position with "<< weightMaterial << " weight" <<  std::endl;
+		}
+		else if(storedDataLine.material.find("Etronit") != std::string::npos ){
+			std::cout << "Found Etronit at " << storedDataLine.positionNumber << "position with "<< weightMaterial << " weight" <<  std::endl;
+		}
+		else if(storedDataLine.material.find("Трафоборд") != std::string::npos ){
+			std::cout << "Found Etronit at " << storedDataLine.positionNumber << "position with "<< weightMaterial << " weight" <<  std::endl;
+		}
+		else{
+			std::cout << "Unknown materialls at " << storedDataLine.positionNumber << "position with "<< weightMaterial << " weight" <<  std::endl;
+		}
 	}
 }
 
