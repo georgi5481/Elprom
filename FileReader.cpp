@@ -81,20 +81,21 @@ void FileReader::singleObjectSort(DataSaver& storedDataLine){
 		}
 
 		if(storedDataLine.material.find("C2R") != std::string::npos || storedDataLine.material.find("P4R") != std::string::npos){
-			std::cout << "Found wood on position" << storedDataLine.positionNumber << " with " << weightMaterial << " weight." << std::endl;
+			std::cout << "Found wood on position " << storedDataLine.positionNumber << " with " << weightMaterial << " weight." << std::endl;
 
 		}
-		else if(storedDataLine.material.find("Cu") != std::string::npos || storedDataLine.material.find("мед") != std::string::npos){
-			std::cout << "Found Cu material at " << storedDataLine.positionNumber << "position with "<< weightMaterial << " weight" <<  std::endl;
+		else if(storedDataLine.material.find("Cu") != std::string::npos || storedDataLine.material.find("мед") != std::string::npos
+				|| storedDataLine.nameDetail.find("Отвод") != std::string::npos){
+			std::cout << "Found Cu material at " << storedDataLine.positionNumber << " position with "<< weightMaterial << " weight" <<  std::endl;
 		}
 		else if(storedDataLine.material.find("Etronit") != std::string::npos ){
-			std::cout << "Found Etronit at " << storedDataLine.positionNumber << "position with "<< weightMaterial << " weight" <<  std::endl;
+			std::cout << "Found Etronit at " << storedDataLine.positionNumber << " position with "<< weightMaterial << " weight" <<  std::endl;
 		}
 		else if(storedDataLine.material.find("Трафоборд") != std::string::npos ){
-			std::cout << "Found Etronit at " << storedDataLine.positionNumber << "position with "<< weightMaterial << " weight" <<  std::endl;
+			std::cout << "Found Etronit at " << storedDataLine.positionNumber << " position with "<< weightMaterial << " weight" <<  std::endl;
 		}
 		else{
-			std::cout << "Unknown materialls at " << storedDataLine.positionNumber << "position with "<< weightMaterial << " weight" <<  std::endl;
+			std::cout << "Unknown materialls at " << storedDataLine.positionNumber << " position with "<< weightMaterial << " weight " <<  std::endl;
 		}
 	}
 }
