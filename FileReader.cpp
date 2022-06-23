@@ -69,8 +69,10 @@ FileReader::~FileReader() {
 
 void FileReader::singleObjectSort(DataSaver& storedDataLine){
 
-	double weightMaterial = 0;	//set the weight to zero by dafault
 	if(storedDataLine.positionNumber != " "){
+
+		double weightMaterial = 0;	//set the weight to zero by dafault
+
 		if(storedDataLine.weigthSingleDetail.size() > 2){
 
 			//converting string to double  with the next 3 lines
@@ -78,9 +80,13 @@ void FileReader::singleObjectSort(DataSaver& storedDataLine){
 			std::replace(storedDataLine.weigthSingleDetail.begin(), storedDataLine.weigthSingleDetail.end(), ',', '.');
 
 			weightMaterial = atof(storedDataLine.weigthSingleDetail.c_str());	//change only if we have input string
+
 		}
+		weightMaterial = (weightMaterial * atof(storedDataLine.quantity.c_str()));
+
 
 		if(storedDataLine.material.find("C2R") != std::string::npos || storedDataLine.material.find("P4R") != std::string::npos){
+
 			std::cout << "Found wood on position " << storedDataLine.positionNumber << " with " << weightMaterial << " weight." << std::endl;
 
 		}
