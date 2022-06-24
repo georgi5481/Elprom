@@ -23,6 +23,7 @@ public:
 private:
 	void singleObjectSort(DataSaver& storedDataLine);
 	void saveDataIntoStorager();
+	double turnIntoDouble(std::string& turnIntoDouble);
 	std::string line;
 
 };
