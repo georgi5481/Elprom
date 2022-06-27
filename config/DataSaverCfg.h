@@ -11,14 +11,6 @@
 
 //own include
 struct Weights{
-
-	std::vector<double> savedCu;
-	std::vector<double> savedWood;
-	std::vector<double> savedEtronit;
-	std::vector<double> savedTransformerboard;
-	std::vector<double> unknownData;
-
-
 	 double weightCu = 0;
 	 double weightWood = 0;
 	 double weightEtronit =0;
@@ -28,6 +20,7 @@ struct Weights{
 };
 
 struct DataSaver {
+
 	std::string drafting;
 	std::string positionPlace;
 	std::string positionNumber;
@@ -38,6 +31,9 @@ struct DataSaver {
 	std::string weigthSingleDetail;
 	std::string BTES;
 
+
+	double quantityDouble = 0;
+	double weightSingleDetailDouble = 0;
 };
 
 #endif /* DATASAVER_H_ */

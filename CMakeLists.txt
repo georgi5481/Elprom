@@ -13,7 +13,7 @@ add_executable(
 
 	${_BASE_DIR}/FileReader.h
 	${_BASE_DIR}/FileReader.cpp
-	${_BASE_DIR}/config/DataSaver.h
+	${_BASE_DIR}/config/DataSaverCfg.h
 
 	
 	${_BASE_DIR}/main.cpp
