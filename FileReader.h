@@ -18,7 +18,7 @@ public:
 	FileReader();
 	FileReader(std::string& path);
 	void saveFilledFile();
-	void printSavedData();
+	void printSavedData(std::string& nameOfOutputFile);
 	~FileReader();
 
 private:

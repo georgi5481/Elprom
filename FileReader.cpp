@@ -134,11 +134,49 @@ void FileReader::saveFilledFile(){
 }
 
 
-void FileReader::printSavedData(){
+void FileReader::printSavedData(std::string& nameOfOutputFile){
+	 std::ofstream outputStream;
+	 std::string pathOutput = "./Mass/" + nameOfOutputFile;
 
-	/*std::cout << "Found wood on position " << storedDataLine.positionNumber << " with " << storedDataLine.weightSingleDetailDouble << " weight. "
-			<< storedDataLine.weightSingleDetailDouble * storedDataLine.quantityDouble << std::endl;	*/
+	 if(outputStream.open(pathOutput) != EXIT_SUCCESS){
 
+	 for(auto& outputObject : savings::savedWood){
+		 outputStream << "Found wood on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
+			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 }
+
+	 	 outputStream << std::endl;
+
+	 for(auto& outputObject : savings::savedCu){
+		 outputStream << "Found Cu on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
+	 			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 }
+
+ 	 outputStream << std::endl;
+
+	 for(auto& outputObject : savings::savedTransformerboard){
+		 outputStream << "Found Trafoboard on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
+	 			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 }
+
+	 outputStream << std::endl;
+
+	 for(auto& outputObject : savings::savedEtronit){
+		 outputStream << "Found Etronit on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
+	 			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 }
+
+ 	 outputStream << std::endl;
+
+	 for(auto& outputObject : savings::savedUnknownData){
+		 outputStream << "Unknown data on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
+	 			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 }
+
+ 	 outputStream << std::endl;
+
+ 	 outputStream.close();
+	 }
 
 }
 

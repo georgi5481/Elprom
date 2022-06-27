@@ -34,8 +34,9 @@ int32_t main(){
 	pathOfFile = "./files/" + enterFileName;
 
 
-	FileReader openTheFile(pathOfFile);
-	openTheFile.saveFilledFile();
+	FileReader workWithFile(pathOfFile);
+	workWithFile.saveFilledFile();
+	workWithFile.printSavedData(enterFileName);
 
 	return  EXIT_SUCCESS;
 }
