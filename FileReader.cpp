@@ -109,30 +109,19 @@ void FileReader::singleObjectSort(DataSaver& storedDataLine){
 		if(storedDataLine.material.find("C2R") != std::string::npos || storedDataLine.material.find("P4R") != std::string::npos){
 			savings::savedWood.push_back(storedDataLine);
 
-			std::cout << "Found wood on position " << storedDataLine.positionNumber << " with " << storedDataLine.weightSingleDetailDouble << " weight. "
-					<< storedDataLine.weightSingleDetailDouble * storedDataLine.quantityDouble << std::endl;
 		}
 		else if(storedDataLine.material.find("Cu") != std::string::npos || storedDataLine.material.find("мед") != std::string::npos
 				|| storedDataLine.nameDetail.find("отвод") != std::string::npos){
 			savings::savedCu.push_back(storedDataLine);
-			std::cout << "Found Cu material at " << storedDataLine.positionNumber << " position with "<< storedDataLine.weightSingleDetailDouble << " weight "
-					<< storedDataLine.weightSingleDetailDouble * storedDataLine.quantityDouble <<  std::endl;
 		}
 		else if(storedDataLine.material.find("Etronit") != std::string::npos ){
 			savings::savedEtronit.push_back(storedDataLine);
-			std::cout << "Found Etronit at " << storedDataLine.positionNumber << " position with "<< storedDataLine.weightSingleDetailDouble << " weight "
-					<< storedDataLine.weightSingleDetailDouble * storedDataLine.quantityDouble <<  std::endl;
-		}
+				}
 		else if(storedDataLine.material.find("Трафоборд") != std::string::npos ){
 			savings::savedTransformerboard.push_back(storedDataLine);
-
-			std::cout << "Found Etronit at " << storedDataLine.positionNumber << " position with "<< storedDataLine.weightSingleDetailDouble << " weight "
-					<< storedDataLine.weightSingleDetailDouble * storedDataLine.quantityDouble << std::endl;
 		}
 		else{
 			savings::savedUnknownData.push_back(storedDataLine);
-			std::cout << "Unknown materialls at " << storedDataLine.positionNumber << " position with "<< storedDataLine.weightSingleDetailDouble << " weight "
-					<< storedDataLine.weightSingleDetailDouble * storedDataLine.quantityDouble << std::endl;
 		}
 	}
 }
@@ -143,6 +132,25 @@ void FileReader::saveFilledFile(){
 		singleObjectSort(inputObject);
 	}
 }
+
+
+void FileReader::printSavedData(){
+
+	/*std::cout << "Found wood on position " << storedDataLine.positionNumber << " with " << storedDataLine.weightSingleDetailDouble << " weight. "
+			<< storedDataLine.weightSingleDetailDouble * storedDataLine.quantityDouble << std::endl;	*/
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
