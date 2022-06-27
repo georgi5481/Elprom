@@ -81,13 +81,13 @@ FileReader::~FileReader() {
 double FileReader::turnIntoDouble(std::string& turnIntoDouble){
 	if(turnIntoDouble.size() > 2){
 
-
 		//converting string to double  with the next 3 lines
 		turnIntoDouble = turnIntoDouble.substr(1, turnIntoDouble.size() - 2);
 
 		std::replace(turnIntoDouble.begin(), turnIntoDouble.end(), ',', '.');
 
-		double convertedDouble = atof(turnIntoDouble.c_str());	//change only if we have input string
+		double convertedDouble = atof(turnIntoDouble.c_str());
+
 		return convertedDouble;
 	}
 	return 0;
@@ -142,7 +142,7 @@ void FileReader::printSavedData(std::string& nameOfOutputFile){
 
 	 for(auto& outputObject : savings::savedWood){
 		 outputStream << "Found wood on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
-			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+				 << outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
 	 }
 
 	 	 outputStream << std::endl;
