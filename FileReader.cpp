@@ -133,50 +133,55 @@ void FileReader::saveFilledFile(){
 	}
 }
 
+void FileReader::fillOutput(std::vector<DataSaver>& inputVector, std::ofstream& outFileStream){
+	for(auto& outputObject : inputVector){
+		outFileStream << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. \t"
+					 << outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+			 }
+}
+
 
 void FileReader::printSavedData(std::string& nameOfOutputFile){
 	 std::ofstream outputStream;
 	 std::string pathOutput = "./Mass/" + nameOfOutputFile;
 
-	 if(outputStream.open(pathOutput) != EXIT_SUCCESS){
+	 outputStream.open(pathOutput);
 
-	 for(auto& outputObject : savings::savedWood){
-		 outputStream << "Found wood on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
-				 << outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 if(savings::savedWood.size() != 0){
+		 outputStream << "Found wood on position ";
+		 fillOutput(savings::savedWood, outputStream);
+		 outputStream << std::endl;
 	 }
 
-	 	 outputStream << std::endl;
-
-	 for(auto& outputObject : savings::savedCu){
-		 outputStream << "Found Cu on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
-	 			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 if(savings::savedCu.size() != 0){
+		 outputStream << "Found Cu on position ";
+		 fillOutput(savings::savedCu, outputStream);
+		 outputStream << std::endl;
 	 }
 
- 	 outputStream << std::endl;
-
-	 for(auto& outputObject : savings::savedTransformerboard){
-		 outputStream << "Found Trafoboard on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
-	 			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 if(savings::savedTransformerboard.size() != 0){
+		 outputStream << "Found Transformerboard on position ";
+		 fillOutput(savings::savedTransformerboard, outputStream);
+		 outputStream << std::endl;
 	 }
 
-	 outputStream << std::endl;
 
-	 for(auto& outputObject : savings::savedEtronit){
-		 outputStream << "Found Etronit on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
-	 			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 if(savings::savedEtronit.size() != 0){
+		 outputStream << "Found wood on position ";
+		 fillOutput(savings::savedEtronit, outputStream);
+		 outputStream << std::endl;
 	 }
 
- 	 outputStream << std::endl;
 
-	 for(auto& outputObject : savings::savedUnknownData){
-		 outputStream << "Unknown data on position " << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. "
-	 			<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+	 if(savings::savedUnknownData.size() != 0){
+		 outputStream << "Found wood on position ";
+		 fillOutput(savings::savedEtronit, outputStream);
+		 outputStream << std::endl;
 	 }
 
- 	 outputStream << std::endl;
 
  	 outputStream.close();
-	 }
+
 
 }
 

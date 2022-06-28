@@ -6,7 +6,7 @@
 
 //C++ system includes
 #include<string>
-
+#include <vector>
 //3rd-party includes
 
 //own include
@@ -22,6 +22,7 @@ public:
 	~FileReader();
 
 private:
+	void fillOutput(std::vector<DataSaver>& inputVector, std::ofstream& outFileStream);
 	void singleObjectSort(DataSaver& storedDataLine);
 	void saveDataIntoStorager();
 	double turnIntoDouble(std::string& turnIntoDouble);
