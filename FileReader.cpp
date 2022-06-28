@@ -20,7 +20,7 @@ static char separatingCharacter = ';';
 static Weights storageWeights;
 
 namespace savings{
-static std::vector<DataSaver> savedInputs; //from the read line of the stream/file
+static std::vector<DataSaver> savedAllInputs; //from the read line of the stream/file
 
 static std::vector<DataSaver> savedCu;
 static std::vector<DataSaver> savedWood;
@@ -38,7 +38,7 @@ FileReader::FileReader(std::string& path){
 
 			for (DataSaver input;																//this is equal to  	for(int i = 0; i<0: i++)
 					std::getline(streamFileReader, input.drafting , separatingCharacter);
-															savings::savedInputs.push_back(input))	//reading every line and putting it into the helping string
+															savings::savedAllInputs.push_back(input))	//reading every line and putting it into the helping string
 
 			{
 
@@ -62,7 +62,7 @@ FileReader::FileReader(std::string& path){
 
 				std::cout  << input.drafting << " , " << input.positionPlace <<  " , " << input.positionNumber << " , " <<
 						input.draftNumerations << " , " << input.nameDetail << " , " << input.quantity << " , " <<
-						input.material << " , " << input.weigthSingleDetail << " , " << input.BTES << std::endl << savings::savedInputs.size() << std::endl;
+						input.material << " , " << input.weigthSingleDetail << " , " << input.BTES << std::endl << savings::savedAllInputs.size() << std::endl;
 
 			}
 	 }
@@ -128,14 +128,14 @@ void FileReader::singleObjectSort(DataSaver& storedDataLine){
 
 
 void FileReader::saveFilledFile(){
-	for(auto& inputObject : savings::savedInputs){
+	for(auto& inputObject : savings::savedAllInputs){
 		singleObjectSort(inputObject);
 	}
 }
 
 void FileReader::fillOutput(std::vector<DataSaver>& inputVector, std::ofstream& outFileStream){
 	for(auto& outputObject : inputVector){
-		outFileStream << outputObject.positionNumber << " with \t " << outputObject.weightSingleDetailDouble << " weight. \t"
+		outFileStream << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. \t"
 					 << outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
 			 }
 }
@@ -148,33 +148,33 @@ void FileReader::printSavedData(std::string& nameOfOutputFile){
 	 outputStream.open(pathOutput);
 
 	 if(savings::savedWood.size() != 0){
-		 outputStream << "Found wood on position :\n";
+		 outputStream << "Found wood on position:\n";
 		 fillOutput(savings::savedWood, outputStream);
 		 outputStream << std::endl;
 	 }
 
 	 if(savings::savedCu.size() != 0){
-		 outputStream << "Found Cu on position :\n";
+		 outputStream << "Found Cu on position:\n";
 		 fillOutput(savings::savedCu, outputStream);
 		 outputStream << std::endl;
 	 }
 
 	 if(savings::savedTransformerboard.size() != 0){
-		 outputStream << "Found Transformerboard on position :\n";
+		 outputStream << "Found Transformerboard on position:\n";
 		 fillOutput(savings::savedTransformerboard, outputStream);
 		 outputStream << std::endl;
 	 }
 
 
 	 if(savings::savedEtronit.size() != 0){
-		 outputStream << "Found Etronit on position :\n";
+		 outputStream << "Found Etronit on position:\n";
 		 fillOutput(savings::savedEtronit, outputStream);
 		 outputStream << std::endl;
 	 }
 
 
 	 if(savings::savedUnknownData.size() != 0){
-		 outputStream << "Unknown material on position :\n";
+		 outputStream << "Unknown material on position:\n";
 		 fillOutput(savings::savedUnknownData, outputStream);
 		 outputStream << std::endl;
 	 }
