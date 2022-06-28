@@ -136,7 +136,8 @@ void FileReader::saveFilledFile(){
 void FileReader::fillOutput(std::vector<DataSaver>& inputVector, std::ofstream& outFileStream){
 	for(auto& outputObject : inputVector){
 		outFileStream << outputObject.positionNumber << " with " << outputObject.weightSingleDetailDouble << " weight. \t"
-					 << outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
+					<< outputObject.weightSingleDetailDouble << "*" << outputObject.quantityDouble  << "="
+					<< outputObject.weightSingleDetailDouble * outputObject.quantityDouble << std::endl;
 			 }
 }
 
