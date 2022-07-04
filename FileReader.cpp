@@ -36,12 +36,11 @@ FileReader::FileReader(std::string& path){
 	if (streamFileReader.is_open()) {
 
 
-			for (DataSaver input;																//this is equal to  	for(int i = 0; i<0: i++)
-					std::getline(streamFileReader, input.drafting , separatingCharacter);
-															savings::savedAllInputs.push_back(input))	//reading every line and putting it into the helping string
+			while (streamFileReader.peek() != std::ifstream::traits_type::eof())	//reading every line and putting it into the helping string
 
 			{
-
+				DataSaver input;
+				std::getline(streamFileReader, input.drafting , separatingCharacter);
 				std::getline(streamFileReader, input.positionPlace , separatingCharacter);
 				std::getline(streamFileReader, input.positionNumber , separatingCharacter);
 				std::getline(streamFileReader, input.draftNumerations , separatingCharacter);
@@ -58,6 +57,8 @@ FileReader::FileReader(std::string& path){
 
 				std::getline(streamFileReader, input.BTES);
 
+
+				savings::savedAllInputs.push_back(input);
 
 
 				std::cout  << input.drafting << " , " << input.positionPlace <<  " , " << input.positionNumber << " , " <<
@@ -180,9 +181,7 @@ void FileReader::printSavedData(std::string& nameOfOutputFile){
 		 outputStream << std::endl;
 	 }
 
-
  	 outputStream.close();
-
 
 }
 
