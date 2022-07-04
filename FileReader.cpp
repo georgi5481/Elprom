@@ -109,7 +109,7 @@ void FileReader::singleObjectSort(DataSaver& storedDataLine){
 				storedDataLine.quantityDouble = quantity;
 				storedDataLine.weightSingleDetailDouble = weightMaterial;
 
-				if(storedDataLine.material.find("C2R") != std::string::npos | storedDataLine.material.find("P4R") != std::string::npos){
+				if(storedDataLine.material.find("C2R") != std::string::npos || storedDataLine.material.find("P4R") != std::string::npos){
 					savings::savedWood.push_back(storedDataLine);
 
 				}
