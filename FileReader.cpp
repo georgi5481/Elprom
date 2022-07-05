@@ -98,7 +98,7 @@ double FileReader::turnIntoDouble(std::string& turnIntoDouble){
 
 
 
-void FileReader::singleObjectSort(DataSaver& storedDataLine){
+void FileReader::singleObjectStore(DataSaver& storedDataLine){
 
 	if(storedDataLine.positionNumber != " " ){
 
@@ -109,7 +109,9 @@ void FileReader::singleObjectSort(DataSaver& storedDataLine){
 				storedDataLine.quantityDouble = quantity;
 				storedDataLine.weightSingleDetailDouble = weightMaterial;
 
-				if(storedDataLine.material.find("C2R") != std::string::npos || storedDataLine.material.find("P4R") != std::string::npos){
+				bool foundWood = storedDataLine.material.find("P4R") != std::string::npos || storedDataLine.material.find("C2R") != std::string::npos;
+
+				if(foundWood){
 					savings::savedWood.push_back(storedDataLine);
 
 				}
@@ -128,12 +130,12 @@ void FileReader::singleObjectSort(DataSaver& storedDataLine){
 				}
 			}
 		}
-	}
+}
 
 
 void FileReader::saveFilledFile(){
 	for(auto& inputObject : savings::savedAllInputs){
-		singleObjectSort(inputObject);
+		singleObjectStore(inputObject);
 	}
 }
 

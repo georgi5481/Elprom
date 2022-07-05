@@ -23,7 +23,7 @@ public:
 
 private:
 	void fillOutput(std::vector<DataSaver>& inputVector, std::ofstream& outFileStream);
-	void singleObjectSort(DataSaver& storedDataLine);
+	void singleObjectStore(DataSaver& storedDataLine);
 	void saveDataIntoStorager();
 	double turnIntoDouble(std::string& turnIntoDouble);
 	std::string line;
